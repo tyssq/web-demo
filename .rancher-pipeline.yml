@@ -8,6 +8,13 @@ stages:
       event:
         include:
         - tag
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: web-demo
+      registry: registry.cn-shenzhen.aliyuncs.com
+  - applyYamlConfig:
+      path: ./deployment.yaml
   when:
     event:
       include:
