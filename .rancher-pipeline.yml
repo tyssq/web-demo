@@ -4,10 +4,15 @@ stages:
   - runScriptConfig:
       image: java:8
       shellScript: mvn clean package -Dmaven.test.skip=true -U
+    when:
+      event:
+        include:
+        - tag
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: web-demo
+      pushRemote: true
       registry: registry.cn-shenzhen.aliyuncs.com
   when:
     event:
