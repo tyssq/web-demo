@@ -8,12 +8,6 @@ stages:
       event:
         include:
         - tag
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: web-demo
-      pushRemote: true
-      registry: registry.cn-shenzhen.aliyuncs.com
   when:
     event:
       include:
