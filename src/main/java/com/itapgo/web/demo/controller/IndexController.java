@@ -15,4 +15,21 @@ public class IndexController {
 	public String index() {
 		return "/index";
 	}
+	
+	@RequestMapping("/monitor")
+	public Object monitor() {
+		String reqUrl = "http://t.itapgo.com:32222/actuator/bus-refresh";
+		String s;
+		try {
+			s = HttpUtil.httpRequest(reqUrl, "", "POST");
+			System.out.println(s);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	public static void main(String[] args) {
+		new IndexController().monitor();
+	}
 }
